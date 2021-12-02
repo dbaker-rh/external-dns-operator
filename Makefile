@@ -138,6 +138,7 @@ undeploy: ## Undeploy controller from the K8s cluster specified in ~/.kube/confi
 # Note that ClusterServiceVersion is not touched as is supposed to be verified manually.
 # The install strategy of ClusterServiceVersion contains the deployment which is not copied over from config/ either.
 olm-manifests: manifests
+	mkdir -p $(BUNDLE_MANIFEST_DIR)
 	cp -f config/crd/bases/externaldns.olm.openshift.io_externaldnses.yaml $(BUNDLE_MANIFEST_DIR)/externaldns.olm.openshift.io_crd.yaml
 	cp -f config/rbac/role.yaml $(BUNDLE_MANIFEST_DIR)/external-dns-operator_rbac.authorization.k8s.io_v1_clusterrole.yaml
 	cp -f config/rbac/role_binding.yaml $(BUNDLE_MANIFEST_DIR)/external-dns-operator_rbac.authorization.k8s.io_v1_clusterrolebinding.yaml
